@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Good Luck Jen!</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;height:100vh;overflow:hidden;background:#000;font-family:Arial,sans-serif;display:flex;justify-content:center;align-items:center;text-align:center;transition:background 1s ease}
+#start{color:#fff}
+#start h1{font-size:27px;margin-bottom:25px}
+button{padding:15px 35px;border:0;border-radius:30px;background:#fff;color:#222;font-size:17px;font-weight:bold;cursor:pointer}
+body.opened{background:#f8a8c4;background-image:radial-gradient(circle at 20% 20%,rgba(255,255,255,.35),transparent 25%),radial-gradient(circle at 80% 80%,rgba(255,255,255,.25),transparent 25%),url("data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='15' y='45' font-size='25' fill='%23ffffff' opacity='.22'%3E♥%3C/text%3E%3C/svg%3E");background-size:auto,auto,80px 80px}
+#message{display:none;position:relative;z-index:20;color:#4a1830;animation:appear 1.2s ease}
+#message h1{font-size:34px;margin:0 0 15px}
+#message p{font-size:21px;line-height:1.6;margin:5px}
+.card{background:rgba(255,255,255,.65);padding:30px 25px;border-radius:25px;box-shadow:0 10px 40px rgba(100,20,50,.2)}
+.flower{position:fixed;top:-80px;z-index:10;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{0%{transform:translateY(-80px) rotate(0deg);opacity:0}10%{opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:.9}}
+@keyframes appear{from{opacity:0;transform:scale(.7) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+</style>
+</head>
+<body>
+<div id="start"><h1>Uy Jen, exam nyo na pala no 😭</h1><button onclick="openSurprise()">CLICK HERE</button></div>
+<div id="message"><div class="card"><h1>🌸 Good luck sa exam! 🌸</h1><p>Kaya mo ’yan, Jen! 💗</p><p>Galingan mo sa exam! ✨</p></div></div>
+<script>
+const flowers=["🌹","🌸","🌺","🌷","🌻","💐","🏵️"];
+function openSurprise(){document.body.classList.add("opened");document.getElementById("start").style.display="none";document.getElementById("message").style.display="block";for(let i=0;i<80;i++){setTimeout(()=>{const f=document.createElement("div");f.className="flower";f.textContent=flowers[Math.floor(Math.random()*flowers.length)];f.style.left=Math.random()*100+"vw";f.style.fontSize=25+Math.random()*30+"px";f.style.animationDuration=3+Math.random()*5+"s";document.body.appendChild(f);setTimeout(()=>f.remove(),9000)},i*60)}}
+</script>
+</body>
+</html>
